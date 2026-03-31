@@ -18,7 +18,7 @@ export default function Index() {
   }, []);
 
   const getPokemons = async () => {
-    const URL = "https://pokeapi.co/api/v2/pokemon?limit=1000000&offset=0";
+    const URL = "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0";
     try {
       const response = await fetch(URL);
       const data = await response.json();
