@@ -1,5 +1,6 @@
 "use client"
-import { useParams } from 'react-router-dom'; // Importación correcta para web
+// CAMBIO: Importar desde next/navigation
+import { useParams } from 'next/navigation'; 
 import { useEffect, useState } from 'react';
 interface PokemonInfo {
     id: number,
@@ -21,8 +22,8 @@ interface PokemonInfo {
     }[];
 }
 export default function PokemonData() {
-    // useParams devuelve un objeto con los parámetros de la URL
-    const { name } = useParams(); 
+    const params = useParams();
+    const name = params.name; // Obtiene el nombre de la URL de Next.js
     const [pokemonDetails, setPokemonDetails] = useState<PokemonInfo | null>(null);
     const [loading, setLoading] = useState(true);
 

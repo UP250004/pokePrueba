@@ -1,15 +1,16 @@
 "use client"
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Index from '../app/index';
-import PokemonData from './pokemon/[name]';
+import "./globals.css";
 
-export default function App() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/pokemon/:name" element={<PokemonData />} />
-      </Routes>
-    </Router>
+    <html lang="es">
+      <body>
+        {children}
+      </body>
+    </html>
   );
 }

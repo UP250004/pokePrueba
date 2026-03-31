@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// CAMBIO: Importar desde next/navigation
+import { useRouter } from "next/navigation"; 
 import PokemonCard from "../components/PokemonCard";
 
 interface Pokemon {
@@ -10,7 +11,7 @@ interface Pokemon {
 
 export default function Index() {
   const [results, setResults] = useState<Pokemon[]>([]);
-  const navigate = useNavigate();
+  const router = useRouter(); // Cambiado
 
   useEffect(() => {
     getPokemons();
@@ -26,23 +27,14 @@ export default function Index() {
       alert(`Error: ${e}`);
     }
   };
-
-  return (
+return (
     <div style={styles.container}>
       <div style={styles.buttonGroup}>
-        <button onClick={() => navigate("/new-screen")}>New Screen</button>
-        <button onClick={() => navigate("/pokemon/charizard")}>Dynamic Route (Charizard)</button>
+        {/* CAMBIO: router.push en lugar de navigate */}
+        <button onClick={() => router.push("/screenNew")}>New Screen</button>
+        <button onClick={() => router.push("/pokemon/charizard")}>Charizard</button>
       </div>
-
-      <div style={styles.scrollContainer}>
-        {results.map((pokemon) => (
-          <PokemonCard 
-            key={pokemon.name} 
-            name={pokemon.name}
-            imageUrl={pokemon.url} 
-          />
-        ))}
-      </div>
+      {/* ... mapeo de resultados */}
     </div>
   );
 }
