@@ -32,8 +32,8 @@ export default function PokemonData() {
 
         try {
             setLoading(true);
-            // Usamos la variable 'name' que viene de la URL
-            const URL = `https://pokeapi.co/api/v2/pokemon/${name?.toLowerCase()}`;
+            // Opción B: Si quieres ser más precavido
+const URL = `https://pokeapi.co/api/v2/pokemon/${String(name).toLowerCase()}`;
             const response = await fetch(URL);
             const data = await response.json();
             setPokemonDetails(data);
